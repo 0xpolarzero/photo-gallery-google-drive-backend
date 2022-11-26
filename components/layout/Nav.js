@@ -20,7 +20,7 @@ export const Nav = ({ theme }) => {
   return (
     <nav className={styles.nav}>
       <div className={styles.nav__logo}>
-        <a href='/'>Nils Leprêtre</a>
+        <a href='/'>Personal gallery</a>
       </div>
       {width < 768 ? (
         <Menu right customBurgerIcon={<FontAwesomeIcon icon={faBars} />}>
@@ -52,10 +52,10 @@ const NavLinks = ({ type, theme }) => {
         </a>
       )}
       <Link href='/'>
-        <span>Galerie</span>
+        <span>Gallery</span>
       </Link>
       <Link href='/about'>
-        <span>A propos</span>
+        <span>About</span>
       </Link>
       {user ? (
         <Profile
@@ -76,7 +76,7 @@ const Profile = ({ user, error, isLoading, type }) => {
     {
       label: (
         <Link href='/admin/dashboard' className='item-with-icon'>
-          <FontAwesomeIcon icon={faGear} /> Panneau d'administration
+          <FontAwesomeIcon icon={faGear} /> Dashboard
         </Link>
       ),
       key: 'dashboard',
@@ -84,7 +84,7 @@ const Profile = ({ user, error, isLoading, type }) => {
     {
       label: (
         <Link href='/admin/move-virtual' className='item-with-icon'>
-          <FontAwesomeIcon icon={faArrowsUpDownLeftRight} /> Déplacer les photos
+          <FontAwesomeIcon icon={faArrowsUpDownLeftRight} /> Move photos
         </Link>
       ),
       key: 'move',
@@ -93,7 +93,7 @@ const Profile = ({ user, error, isLoading, type }) => {
       label: (
         <Link href='/api/auth/logout' className='item-with-icon'>
           <FontAwesomeIcon icon={faRightFromBracket} />
-          Déconnexion
+          Logout
         </Link>
       ),
       key: 'logout',

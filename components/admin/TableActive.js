@@ -52,14 +52,15 @@ export const TableActive = ({
         row.tags = row.tags.join(',');
       }
 
-      const updateResponseToast = toast.loading(
-        'Mise à jour des informations...',
-      );
+      const updateResponseToast = toast.loading('Updating spreadsheet row...');
       await updateSpreadsheetRow(key, row)
         .then((res) => {
           toast.update(updateResponseToast, {
-            render: 'Informations mises à jour!',
-            type: 'success',
+            render:
+              res.status === 200
+                ? 'Update successful'
+                : 'Error updating spreadsheet',
+            type: res.status === 200 ? 'success' : 'error',
             isLoading: false,
             autoClose: 5000,
           });
@@ -69,7 +70,7 @@ export const TableActive = ({
         })
         .catch((err) => {
           toast.update(updateResponseToast, {
-            render: 'Erreur lors de la mise à jour.',
+            render: 'Error updating spreadsheet',
             type: 'error',
             isLoading: false,
             autoClose: 5000,
@@ -77,17 +78,17 @@ export const TableActive = ({
           console.error(err);
         });
     } catch (errInfo) {
-      console.log('Erreur de validation:', errInfo);
+      console.log('Validation error', errInfo);
     }
   };
 
   const deleteRow = async (key) => {
-    const deleteResponseToast = toast.loading('Suppression de la photo...');
+    const deleteResponseToast = toast.loading('Removing photo...');
     await deleteSpreadsheetRow(key)
       .then((res) => {
         toast.update(deleteResponseToast, {
-          render: 'Photo supprimée!',
-          type: 'success',
+          render: res.status === 200 ? 'Photo removed' : 'Error removing photo',
+          type: res.status === 200 ? 'success' : 'error',
           isLoading: false,
           autoClose: 5000,
         });
@@ -97,7 +98,7 @@ export const TableActive = ({
       })
       .catch((err) => {
         toast.update(deleteResponseToast, {
-          render: 'Erreur lors de la suppression.',
+          render: 'Error removing photo',
           type: 'error',
           isLoading: false,
           autoClose: 5000,
@@ -108,12 +109,12 @@ export const TableActive = ({
 
   const moveRow = async (index, targetIndex) => {
     setIsMovingRow(true);
-    const moveResponseToast = toast.loading('Déplacement de la photo...');
+    const moveResponseToast = toast.loading('Moving photo...');
     await moveSpreadsheetRow(index, targetIndex)
       .then((res) => {
         toast.update(moveResponseToast, {
-          render: 'Photo déplacée!',
-          type: 'success',
+          render: res.status === 200 ? 'Photo moved' : 'Error moving photo',
+          type: res.status === 200 ? 'success' : 'error',
           isLoading: false,
           autoClose: 1000,
         });
@@ -124,7 +125,7 @@ export const TableActive = ({
       })
       .catch((err) => {
         toast.update(moveResponseToast, {
-          render: 'Erreur lors du déplacement.',
+          render: 'Error moving photo',
           type: 'error',
           isLoading: false,
           autoClose: 5000,
@@ -149,7 +150,7 @@ export const TableActive = ({
       ),
     },
     {
-      title: 'Titre',
+      title: 'Title',
       dataIndex: 'title',
       width: '0',
       editable: true,
@@ -163,15 +164,14 @@ export const TableActive = ({
     {
       title: () => (
         <span className='item-with-icon'>
-          Filtres
+          Tags
           <Tooltip
             title={
               <>
-                Séparer les tags par une virgule.
+                Separate tags with commas.
                 <br />
                 <br />
-                Le premier peut être directement sélectionné depuis la liste
-                déroulante.
+                The first tag can be chosen from the dropdown.
               </>
             }
           >
@@ -214,16 +214,16 @@ export const TableActive = ({
                 marginRight: 8,
               }}
             >
-              Sauvegarder
+              Save
               <br />
             </button>
             <Popconfirm
-              title='Annuler les modifications?'
+              title='Cancel editing?'
               onConfirm={cancel}
-              okText='Oui'
-              cancelText='Non'
+              okText='Yes'
+              cancelText='No'
             >
-              <button className='action-btn'>Annuler</button>
+              <button className='action-btn'>Cancel</button>
             </Popconfirm>
           </div>
         ) : (
@@ -234,10 +234,10 @@ export const TableActive = ({
                 disabled={editingKey !== ''}
                 onClick={() => edit(record)}
               >
-                Modifier
+                Edit
               </button>
               <Popconfirm
-                title='Supprimer cette image?'
+                title='Are you sure you want to remove this photo?'
                 onConfirm={() => deleteRow(record.key)}
               >
                 <button
@@ -246,7 +246,7 @@ export const TableActive = ({
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  <FontAwesomeIcon icon={faTrash} /> Supprimer
+                  <FontAwesomeIcon icon={faTrash} /> Remove
                 </button>
               </Popconfirm>
             </div>
@@ -322,7 +322,6 @@ export const TableActive = ({
               },
             ]}
           >
-            {/* if its tags and the input in empty */}
             {dataIndex === 'tags' &&
             record[dataIndex].length === 1 &&
             record[dataIndex][0] === '' ? (

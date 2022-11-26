@@ -29,10 +29,10 @@ export const TagsDrawer = ({
           <Tooltip
             title={
               <>
-                Cliquer sur un filtre pour le modifier.
+                Click on a tag to edit it.
                 <br />
                 <br />
-                Il sera modifié pour toutes les photos qui le contiennent.
+                It will be applied to all photos with the same tag.
               </>
             }
           >
@@ -45,7 +45,7 @@ export const TagsDrawer = ({
       editable: true,
     },
     {
-      title: 'Nombre de photos',
+      title: 'Photos count',
       dataIndex: 'count',
       key: 'count',
       editable: false,
@@ -58,7 +58,7 @@ export const TagsDrawer = ({
       render: (_, record) =>
         filteredTags.length >= 1 ? (
           <Popconfirm
-            title='Êtes-vous sûr de vouloir supprimer ce tag?'
+            title='Are you sure to delete this tag?'
             onConfirm={() => handleDelete(record)}
           >
             <button
@@ -69,7 +69,7 @@ export const TagsDrawer = ({
                 padding: '0.5rem 1rem',
               }}
             >
-              <FontAwesomeIcon icon={faTrash} /> Supprimer
+              <FontAwesomeIcon icon={faTrash} /> Delete
             </button>
           </Popconfirm>
         ) : null,
@@ -98,7 +98,7 @@ export const TagsDrawer = ({
       key: tagsCount,
       // Add tag with empty space so it can be clicked on, not using just a space
       // because it would be trimmed
-      tag: 'Nouveau filtre',
+      tag: 'New tag',
       count: 0,
     };
     setFilteredTags([...filteredTags, newTag]);
@@ -113,7 +113,7 @@ export const TagsDrawer = ({
         tag.key !== row.key,
     );
     if (tagAlreadyExists.length > 0) {
-      toast.error('Ce filtre existe déjà.');
+      toast.error('Tag already exists.');
       return;
     }
 
@@ -160,12 +160,12 @@ export const TagsDrawer = ({
       (tag, index) => tags.indexOf(tag) !== index,
     );
     if (duplicateTags.length > 0) {
-      toast.error('Il y a des doublons dans les tags.');
+      toast.error('Duplicate tags.');
       return;
     }
 
     // Update the spreadsheet
-    const updateToast = toast.loading('Mise à jour des tags...');
+    const updateToast = toast.loading('Updating tags...');
     const response = await fetch('/api/write-spreadsheet/update-tags', {
       method: 'POST',
       headers: {
@@ -181,7 +181,7 @@ export const TagsDrawer = ({
       data.cellRes.status === 200 && data.rowsRes.status === 200;
 
     toast.update(updateToast, {
-      render: isSuccess ? 'Tags mis à jour!' : 'Erreur lors de la mise à jour',
+      render: isSuccess ? 'Tags updated!' : 'Error updating tags.',
       type: isSuccess ? 'success' : 'error',
       isLoading: false,
       autoClose: 3000,
@@ -247,7 +247,7 @@ export const TagsDrawer = ({
 
   return (
     <Drawer
-      title='Filtres'
+      title='Tags'
       open={isDrawerOpen}
       onOk={() => setIsDrawerOpen(false)}
       onClose={() => setIsDrawerOpen(false)}
@@ -255,7 +255,7 @@ export const TagsDrawer = ({
       destroyOnClose={true}
       extra={
         <button className='action-btn success' onClick={handleSubmit}>
-          Sauvegarder
+          Save
         </button>
       }
     >
@@ -263,18 +263,18 @@ export const TagsDrawer = ({
         <Skeleton active title={false} paragraph={{ rows: 4 }} />
       ) : filteredTags.length === 0 ? (
         <>
-          <p>Aucun filtre.</p>
+          <p>No tags found.</p>
           <br />
           <button className='action-btn item-with-icon' onClick={handleAdd}>
             <FontAwesomeIcon icon={faAdd} />
-            Ajouter un filtre
+            Add tag
           </button>
         </>
       ) : (
         <>
           <button className='action-btn item-with-icon' onClick={handleAdd}>
             <FontAwesomeIcon icon={faAdd} />
-            Ajouter un filtre
+            Add tag
           </button>
           <br />
           <Table

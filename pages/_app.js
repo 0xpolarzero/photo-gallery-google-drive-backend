@@ -34,11 +34,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Nils Lepretre</title>
-        <meta
-          name='description'
-          content='Page photo personnelle de Nils Lepretre'
-        />
+        <title>Personal gallery</title>
+        <meta name='description' content='Personal photo gallery' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <ConfigProvider

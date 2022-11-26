@@ -21,31 +21,30 @@ export default function Admin() {
 
   return (
     <div className='admin'>
-      <h2 style={{ marginBottom: 0 }}>Panneau d'administration</h2>
+      <h2 style={{ marginBottom: 0 }}>Admin dashboard</h2>
       <div className='admin-greeting'>
-        Bienvenue sur le panneau d'administration, <b>{user.nickname}</b>.
+        Welcome to your dashboard, <b>{user.nickname}</b>.
       </div>
       <div className='admin-links'>
-        <Divider orientation='left'>Gestion des photos</Divider>
+        <Divider orientation='left'>Manage photos</Divider>
         <span>
-          <b>Modifier les informations</b> des photos (titre, description,
-          filtres), en <b>ajouter</b> ou en <b>supprimer</b>.
+          <b>Update photos informations</b> (title, description, tags),{' '}
+          <b>add</b> or <b>delete</b> photos.
         </span>
         <Link href='/admin/dashboard'>
           <button className='action-btn item-with-icon'>
-            <FontAwesomeIcon icon={faGear} /> Gérer les photos et tags
+            <FontAwesomeIcon icon={faGear} /> Manage photos & tags
           </button>
         </Link>
         <Divider orientation='left' style={{ marginTop: '2rem' }}>
-          Organisation de la galerie
+          Organize gallery
         </Divider>
         <span>
-          Pour <b>modifier l'ordre des photos</b> dans la galerie.
+          To <b>arrange the photos</b> in the gallery.
         </span>
         <Link href='/admin/move-virtual'>
           <button className='action-btn item-with-icon'>
-            <FontAwesomeIcon icon={faArrowsUpDownLeftRight} /> Organiser la
-            galerie
+            <FontAwesomeIcon icon={faArrowsUpDownLeftRight} /> Move images
           </button>
         </Link>
       </div>

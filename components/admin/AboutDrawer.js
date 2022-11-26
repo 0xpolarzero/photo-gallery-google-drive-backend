@@ -30,8 +30,8 @@ export const AboutDrawer = ({ open, setOpen, content, updateAbout }) => {
     toast.update(updateToast, {
       render:
         data.status === 200
-          ? 'Mise à jour réussie'
-          : 'Erreur lors de la mise à jour',
+          ? 'Update successful'
+          : 'Error updating spreadsheet',
       type: data.status === 200 ? 'success' : 'error',
       isLoading: false,
       autoClose: 5000,
@@ -49,7 +49,7 @@ export const AboutDrawer = ({ open, setOpen, content, updateAbout }) => {
 
   return (
     <Drawer
-      title={<>Modifier la page</>}
+      title={<>Edit page</>}
       open={open}
       onClose={() => setOpen(false)}
       width={'70%'}
@@ -59,13 +59,13 @@ export const AboutDrawer = ({ open, setOpen, content, updateAbout }) => {
           htmltype='submit'
           onClick={writeSpreadsheet}
         >
-          Sauvegarder
+          Save
         </button>
       }
     >
       <h2 className='item-with-icon'>
-        A propos de moi{' '}
-        <Tooltip title='Ajoutez autant de paragraphes que nécessaire, puis pensez bien à sauvegarder.'>
+        About me{' '}
+        <Tooltip title='This is the content of the about page. Add as much content as you want, but do not forget to save!'>
           <FontAwesomeIcon icon={faInfoCircle} style={{ height: 16 }} />
         </Tooltip>
       </h2>

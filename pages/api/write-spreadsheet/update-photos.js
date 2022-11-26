@@ -1,5 +1,9 @@
-import { sheets, SHEET_ID } from '../../../data/getGoogleApiClient';
-import { getFirebaseFiles } from '../../../data/getFirebaseStorage';
+import {
+  drive,
+  sheets,
+  FOLDER_ID,
+  SHEET_ID,
+} from '../../../data/getGoogleApiClient';
 import { backupSpreadsheet } from '../../../data/backupSpreadsheet';
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
 
@@ -73,7 +77,7 @@ async function updateSpreadsheetFromFolder(photos) {
       // If there are new photos, add them to the spreadsheet
       // Find the number of rows, exluding deleted ones (index -1)
       let imgCount = rows.filter((row) => {
-        return row[6] !== '-1';
+        return row[7] !== '-1';
       }).length;
       const newRows = newPhotos.map((photo) => {
         return [
@@ -143,7 +147,7 @@ async function updateSpreadsheetRow(id, src, title, description, tags, index) {
 
   if (tagsRows && tagsRows.length) {
     const tagsRow = tagsRows[0];
-    tagsArray = tagsRow[0].split(',');
+    tagsArray = tagsRow[0]?.split(',');
   } else {
     tagsArray = [];
   }
@@ -169,17 +173,28 @@ async function updateSpreadsheetRow(id, src, title, description, tags, index) {
   return { response, tagsResponse };
 }
 
-async function getFirebaseImages() {
-  const files = await getFirebaseFiles();
+async function getGoogleDrivePhotos() {
+  const res = await drive.files
+    .list({
+      // q: "trashed=false and mimeType='image/jpeg' or mimeType='image/png' or mimeType='image/gif' or mimeType='image/webp' or mimeType='image/bmp' or mimeType='image/tiff' or mimeType='image/jpg'",
+      q: `'${FOLDER_ID}' in parents and mimeType contains 'image/'`,
+      fields: 'files(id, name, imageMediaMetadata, webContentLink)',
+      pageSize: 1000,
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  const files = res.data.files;
+  console.log(files);
 
   if (files && files.length) {
     return files.map((file) => {
       return {
-        id: file.name,
-        src: file.url,
+        id: file.id,
+        src: file.webContentLink,
         name: file.name,
-        width: file.customMetadata.width,
-        height: file.customMetadata.height,
+        width: file.imageMediaMetadata.width,
+        height: file.imageMediaMetadata.height,
       };
     });
   } else {
@@ -189,7 +204,7 @@ async function getFirebaseImages() {
 }
 
 async function main(parameters) {
-  const photos = await getFirebaseImages();
+  const photos = await getGoogleDrivePhotos();
 
   if (!parameters) {
     return await updateSpreadsheetFromFolder(photos);

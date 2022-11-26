@@ -60,7 +60,7 @@ export const Gallery = () => {
       if (res.photoStatus !== 200 || res.tagStatus !== 200) {
         console.log('Error fetching data from spreadsheet');
         toast.error(
-          'Une erreur a eu lieu pendant le chargement. Veuillez réeessayer.',
+          'Error fetching data from spreadsheet. Please try again later.',
         );
       }
     });
@@ -95,7 +95,7 @@ export const Gallery = () => {
   return (
     <main className={styles.main}>
       <div className='filters'>
-        <h2>Filtres</h2>
+        <h2>Filters</h2>
         <div className='filters-tags'>
           {/* Button to reset */}
           <button
@@ -105,7 +105,7 @@ export const Gallery = () => {
             style={{ fontWeight: '700' }}
             onClick={() => setSelectedTags([])}
           >
-            Tout afficher
+            Show All
           </button>
           {/* Button for each tag */}
           {tags.length > 0 ? (
@@ -168,7 +168,7 @@ export const Gallery = () => {
       {!filteredPhotos ? (
         <MultipleSkeletons count={8} />
       ) : filteredPhotos.length === 0 ? (
-        <p className='no-photos'>Aucune photo ne correspond à ces critères</p>
+        <p className='no-photos'>No photos found</p>
       ) : (
         <>
           <PhotoAlbum

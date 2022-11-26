@@ -43,7 +43,7 @@ export const EditableCellTags = ({
       const values = await form.validateFields();
       // If the value is empty, revert to the previous value
       if (values[dataIndex] === '') {
-        toast.error('Le filtre ne peut pas être vide.');
+        toast.error('Tag cannot be empty');
         toggleEdit();
         return;
       }

@@ -72,14 +72,14 @@ export default function Dashboard() {
           className='action-btn item-with-icon'
           onClick={() => setIsUploadDrawerOpen(true)}
         >
-          <FontAwesomeIcon icon={faPlus} /> AJOUTER DES PHOTOS
+          <FontAwesomeIcon icon={faPlus} /> ADD PHOTOS
         </button>
         <button
           className='action-btn item-with-icon'
           onClick={() => setIsTagsDrawerOpen(true)}
         >
           <FontAwesomeIcon icon={faFilter} />
-          Modifier les filtres
+          Edit filters
         </button>
       </div>
       {!!photos && photos.length > 0 ? (
@@ -88,7 +88,7 @@ export default function Dashboard() {
             <h2 style={{ margin: 0 }}>Photos</h2>
             <button className='action-btn'>
               <Link href='/admin/move-virtual' className='item-with-icon'>
-                Déplacer visuellement <FontAwesomeIcon icon={faArrowRight} />
+                Move in the gallery <FontAwesomeIcon icon={faArrowRight} />
               </Link>
             </button>
           </div>
@@ -99,18 +99,18 @@ export default function Dashboard() {
           />
         </>
       ) : (
-        <p>Aucune photo pour l'instant</p>
+        <p>No photo yet.</p>
       )}
       {!!deletedPhotos && deletedPhotos.length > 0 ? (
         <>
-          <h2 style={{ margin: 0 }}>Supprimées</h2>
+          <h2 style={{ margin: 0 }}>Deleted</h2>
           <TableDeleted
             photos={deletedPhotos}
             readSpreadsheet={readSpreadsheet}
           />
         </>
       ) : (
-        <p>Aucune photo supprimée</p>
+        <p>No deleted photo yet.</p>
       )}
       <TagsDrawer
         isDrawerOpen={isTagsDrawerOpen}

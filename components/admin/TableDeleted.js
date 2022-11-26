@@ -62,11 +62,11 @@ export const TableDeleted = ({
   };
 
   const restoreRow = async (key) => {
-    const restoreResponseToast = toast.loading('Restauration de la photo...');
+    const restoreResponseToast = toast.loading('Restoring photo...');
     await restoreSpreadsheetRow(key)
       .then((res) => {
         toast.update(restoreResponseToast, {
-          render: 'Photo restaurée!',
+          render: 'Photo restored',
           type: 'success',
           isLoading: false,
           autoClose: 5000,
@@ -77,7 +77,7 @@ export const TableDeleted = ({
       })
       .catch((err) => {
         toast.update(restoreResponseToast, {
-          render: 'Erreur lors de la restauration.',
+          render: 'Error restoring photo',
           type: 'error',
           isLoading: false,
           autoClose: 5000,
@@ -102,7 +102,7 @@ export const TableDeleted = ({
       ),
     },
     {
-      title: 'Titre',
+      title: 'Title',
       dataIndex: 'title',
       width: 'min-content',
       editable: true,
@@ -114,7 +114,7 @@ export const TableDeleted = ({
       editable: true,
     },
     {
-      title: 'Filtres',
+      title: 'Tags',
       dataIndex: 'tags',
       width: 'min-content',
       editable: true,
@@ -136,7 +136,7 @@ export const TableDeleted = ({
               className='action-btn success'
               onClick={() => restoreRow(record.key)}
             >
-              Restaurer
+              Restore
             </button>
           </div>
         );

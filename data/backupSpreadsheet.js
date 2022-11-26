@@ -1,4 +1,4 @@
-import { drive, SHEET_ID } from './getGoogleApiClient';
+import { drive, SHEET_ID, PARENT_FOLDER_ID } from './getGoogleApiClient';
 
 export const backupSpreadsheet = async () => {
   const response = await createSpreadsheetCopy();
@@ -9,7 +9,7 @@ const createSpreadsheetCopy = async () => {
   const request = {
     resource: {
       name: `_database_backup_${new Date().toISOString()}`,
-      parents: ['1ACxprOwdjyRXtXUUhI3rC6BBdQCt_P-d'],
+      parents: [PARENT_FOLDER_ID],
     },
     fileId: SHEET_ID,
   };

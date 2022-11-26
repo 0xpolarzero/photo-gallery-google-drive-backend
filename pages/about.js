@@ -1,6 +1,6 @@
 import { AboutDrawer } from '../components/admin/AboutDrawer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPen } from '@fortawesome/free-solid-svg-icons';
 import { Skeleton } from 'antd';
 import { useEffect, useState } from 'react';
@@ -30,13 +30,13 @@ export default function About() {
   return (
     <div className='about'>
       <div className='header'>
-        <h2 style={{ margin: 0 }}>A propos de moi</h2>
+        <h2 style={{ margin: 0 }}>About me</h2>
         {user ? (
           <button
             className='action-btn item-with-icon'
             onClick={() => setAboutDrawerOpen(true)}
           >
-            <FontAwesomeIcon icon={faPen} /> Modifier
+            <FontAwesomeIcon icon={faPen} /> Edit
           </button>
         ) : null}
       </div>
@@ -61,23 +61,19 @@ export default function About() {
         />
         <a
           className='twitter'
-          href='https://twitter.com/Nils_Lepretre'
+          href='https://twitter.com/0xpolarzero'
           target='_blank'
         >
-          <span>@ Nils_Lepretre</span>
+          <span>@ 0xpolarzero</span>
         </a>
 
         <FontAwesomeIcon
-          icon={faInstagram}
+          icon={faGithub}
           height={30}
-          style={{ color: '#c13584' }}
+          style={{ color: 'var(--color-secondary)' }}
         />
-        <a
-          className='instagram'
-          href='https://www.instagram.com/nils_phot0/'
-          target='_blank'
-        >
-          <span>@ nils_phot0</span>
+        <a className='github' href='https://github.com/polar0' target='_blank'>
+          <span>@ polar0</span>
         </a>
 
         <FontAwesomeIcon
@@ -85,8 +81,8 @@ export default function About() {
           height={30}
           style={{ color: '#d44638' }}
         />
-        <a className='email' href='mailto:nils.lepretre@gmail.com'>
-          <span>nils.lepretre@gmail.com</span>
+        <a className='email' href='mailto:0xpolarzero@gmail.com'>
+          <span>0xpolarzero@gmail.com</span>
         </a>
       </div>
       <AboutDrawer

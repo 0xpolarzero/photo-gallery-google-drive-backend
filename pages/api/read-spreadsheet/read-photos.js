@@ -29,7 +29,7 @@ async function getSpreadsheetData() {
         src: row[1],
         title: row[2],
         description: row[3],
-        tags: row[4].split(','),
+        tags: row[4]?.split(','),
         width: row[5],
         height: row[6],
         index: row[7],

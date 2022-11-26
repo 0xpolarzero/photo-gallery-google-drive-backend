@@ -15,5 +15,6 @@ const auth = new google.auth.GoogleAuth({
 export const drive = google.drive({ version: 'v3', auth });
 export const sheets = google.sheets({ version: 'v4', auth });
 
-export const FOLDER_ID = '1kHSatX8MoYiJBit3KHZwrqymOFrwJ0y1';
-export const SHEET_ID = '1v9QJRSB2i8S5ZDU0TosGKrnicyqBLBlxS-Oiv_P1aWs';
+export const FOLDER_ID = '1YTv0TAqylMwOHT9D7dCg3OvBL_ZsApN9';
+export const SHEET_ID = '10DvkrvIcwth2IiZwuVDxW0CmsM0t3qc5XOW9I13VLfA';
+export const PARENT_FOLDER_ID = '14qYBoDylfM9MptKTEwpMm-uyXnsvjnO6';

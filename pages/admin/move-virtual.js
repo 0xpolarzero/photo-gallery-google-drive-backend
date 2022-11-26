@@ -227,15 +227,15 @@ export default function MoveVirtual() {
   return (
     <div className='admin'>
       <div className='header'>
-        <h2>Déplacer visuellement</h2>
+        <h2>Move photos</h2>
         <div className='buttons' style={{ display: 'flex', gap: '1rem' }}>
           <button className='action-btn'>
             <Link href='/admin/dashboard' className='item-with-icon'>
-              <FontAwesomeIcon icon={faArrowLeft} /> Retour au dashboard
+              <FontAwesomeIcon icon={faArrowLeft} /> Back to the dashboard
             </Link>
           </button>
           <button className='action-btn success' onClick={savePhotoPositions}>
-            Sauvegarder
+            Save
           </button>
         </div>
       </div>
