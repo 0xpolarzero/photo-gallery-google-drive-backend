@@ -55,12 +55,13 @@ export const TableActive = ({
       const updateResponseToast = toast.loading('Updating spreadsheet row...');
       await updateSpreadsheetRow(key, row)
         .then((res) => {
+          const success =
+            res.response.status === 200 && res.tagsResponse.status === 200;
           toast.update(updateResponseToast, {
-            render:
-              res.status === 200
-                ? 'Update successful'
-                : 'Error updating spreadsheet',
-            type: res.status === 200 ? 'success' : 'error',
+            render: success
+              ? 'Update successful'
+              : 'Error updating spreadsheet',
+            type: success ? 'success' : 'error',
             isLoading: false,
             autoClose: 5000,
           });
