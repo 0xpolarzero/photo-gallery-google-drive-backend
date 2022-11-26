@@ -1,0 +1,41 @@
+.about {
+  padding: 0 2rem;
+  width: min(100%, 1600px);
+  justify-self: center;
+}
+
+.about .header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.about .social-links {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.about a {
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 1rem 2rem;
+}
+
+.about a:hover {
+  transform: translateX(1rem);
+}
+
+.about a.twitter:hover {
+  color: #1da1f2;
+}
+
+.about a.instagram:hover {
+  color: #c13584;
+}
+
+.about a.email:hover {
+  color: #d44638;
+}

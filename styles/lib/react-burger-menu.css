@@ -1,0 +1,85 @@
+/* Position and sizing of burger button */
+.bm-burger-button {
+  color: var(--color-secondary);
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 2rem;
+  top: 2rem;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.bm-burger-button:hover {
+  opacity: 1;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #fff;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.bm-cross-button:hover {
+  opacity: 1;
+}
+
+/*
+  Sidebar wrapper styles
+  Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+  */
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  overflow: hidden;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: rgba(var(--color-rgb-secondary), 0.3);
+  padding: 3em 2em 0;
+  font-size: 1.15em;
+  backdrop-filter: blur(10px);
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.bm-item-list a {
+  transition: transform 0.3s ease;
+}
+
+.bm-item-list a:hover {
+  transform: translateX(1rem);
+}
+
+/* Individual item */
+.bm-item-list a::before {
+  content: '→';
+  position: absolute;
+  transform: translateX(-400%);
+  transition: transform 0.3s ease;
+}
+
+.bm-item-list a:hover::before {
+  transform: translateX(-1.5rem);
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  left: 0;
+  background: rgba(var(--color-rgb-secondary), 0.3);
+}

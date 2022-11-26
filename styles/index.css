@@ -1,0 +1,10 @@
+@import './globals.css';
+@import './pages/gallery.css';
+@import './pages/about.css';
+@import './pages/admin.css';
+
+@import './lib/react-burger-menu.css';
+@import './lib/sortable-gallery.css';
+@import 'yet-another-react-lightbox/styles.css';
+@import 'yet-another-react-lightbox/plugins/captions.css';
+@import 'react-toastify/dist/ReactToastify.css';

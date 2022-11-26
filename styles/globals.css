@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-primary: 'Zilla Slab', -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+  color-scheme: light dark;
+  --color-primary: #fff;
+  --color-secondary: #000;
+  --color-background: #fff;
+  --color-rgb-primary: 255, 255, 255;
+  --color-rgb-secondary: 0, 0, 0;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  background: var(--color-background);
+  color: var(--color-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.action-btn {
+  font-family: var(--font-primary);
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background: rgba(var(--color-rgb-secondary), 0.3);
+}
+
+.action-btn:active {
+  background: rgba(var(--color-rgb-secondary), 0.5);
+}
+
+.action-btn:disabled {
+  background: rgba(0, 0, 0, 0.1);
+  cursor: not-allowed;
+}
+
+.action-btn.active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.action-btn.selected {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.item-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item-with-icon svg {
+  height: 1rem;
+}
+
+[data-theme='dark'] {
+  --color-primary: #000;
+  --color-secondary: #fff;
+  --color-background: #131313;
+  --color-rgb-primary: 0, 0, 0;
+  --color-rgb-secondary: 255, 255, 255;
+}

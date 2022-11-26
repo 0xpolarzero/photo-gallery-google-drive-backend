@@ -1,0 +1,28 @@
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.main {
+  padding: 1rem 2rem;
+  width: min(100%, 1600px);
+  justify-self: center;
+}
+
+.footer {
+  display: flex;
+  flex: 1;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(var(--color-rgb-secondary), 0.1);
+  justify-content: center;
+  align-items: center;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  .footer {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+} */

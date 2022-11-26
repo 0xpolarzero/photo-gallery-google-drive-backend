@@ -1,0 +1,141 @@
+.admin {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 2rem;
+  width: min(100%, 1600px);
+  justify-self: center;
+}
+
+.admin .actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* In table */
+.tags-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag-item,
+.update-tag-item {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background: rgba(var(--color-rgb-secondary), 0.1);
+}
+
+/* In tags editor (delete) */
+.update-tags-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.update-tag-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem;
+}
+
+.table-action-btns,
+.table-action-btns-modif {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.table-action-btns-modif {
+  flex-direction: column;
+}
+
+.table-action-btns-modif button {
+  width: 100%;
+}
+
+.table-action-btns .change-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.index-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.index-arrows {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.action-btn.arrow {
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+}
+
+.table-action-btns .action-btn {
+  font-size: 0.9rem;
+}
+
+.action-btn.success {
+  background: rgba(82, 196, 26, 0.6);
+}
+
+.action-btn.success:hover {
+  background: rgba(82, 196, 26, 0.8);
+}
+
+.action-btn.success:active {
+  background: rgba(82, 196, 26, 0.9);
+}
+
+.action-btn.danger {
+  background: rgba(255, 0, 0, 0.6);
+}
+
+.action-btn.danger:active {
+  background: rgba(255, 0, 0, 0.9);
+}
+
+.action-btn.danger:hover {
+  background: rgba(255, 0, 0, 0.8);
+}
+
+.admin .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editable-cell-value-wrap {
+  cursor: pointer;
+}
+
+.upload-instructions div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-greeting {
+  font-size: 1.1rem;
+}
+
+.ant-dropdown-content div div div {
+  padding: 0 !important;
+}
