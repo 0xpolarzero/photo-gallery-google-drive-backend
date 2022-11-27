@@ -38,6 +38,9 @@ async function sortSpreadsheetById(idArray) {
       row[7] = index;
     });
 
+    // Reverse the array so the first item is at the bottom
+    newRows.reverse();
+
     // Find the number of rows with an index of -1 to start writing after
     const deletedRows = rows.filter((row) => row[6] === '-1');
     const startIndex = deletedRows.length + 2;

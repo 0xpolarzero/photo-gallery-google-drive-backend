@@ -28,27 +28,27 @@ async function updateIndexRows(originIndex, targetIndex) {
   if (rows && rows.length) {
     // Store the row that is being moved
     const rowToMove = rows.find((row) => {
-      return Number(row[6]) === originIndex;
+      return Number(row[7]) === originIndex;
     });
     // If the user is moving the row up
     if (originIndex > targetIndex) {
       // Go through each row and if the index is between the target and origin, add 1 to the index
       rows.forEach((row) => {
-        if (Number(row[6]) >= targetIndex && Number(row[6]) < originIndex) {
-          row[6] = Number(row[6]) + 1;
+        if (Number(row[7]) >= targetIndex && Number(row[7]) < originIndex) {
+          row[7] = Number(row[7]) + 1;
         }
       });
       // If the user is moving the row down
     } else if (originIndex < targetIndex) {
       // Go through each row and if the index is between the origin and target, subtract 1 from the index
       rows.forEach((row) => {
-        if (Number(row[6]) > originIndex && Number(row[6]) <= targetIndex) {
-          row[6] = Number(row[6]) - 1;
+        if (Number(row[7]) > originIndex && Number(row[7]) <= targetIndex) {
+          row[7] = Number(row[7]) - 1;
         }
       });
     }
     // Update the row with the new index
-    rowToMove[6] = targetIndex;
+    rowToMove[7] = targetIndex;
 
     // Update the spreadsheet
     const updateRequest = {
@@ -73,7 +73,7 @@ export const sortSpreadsheetByIndex = async (rows) => {
   // Take the rows and sort them by index
   // Then return the sorted rows, that coud be used to update the spreadsheet
   const sortedRows = rows.sort((a, b) => {
-    return a[6] - b[6];
+    return a[7] - b[7];
   });
 
   return sortedRows;
