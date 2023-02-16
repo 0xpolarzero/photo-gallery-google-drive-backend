@@ -72,8 +72,12 @@ export default function About() {
           height={30}
           style={{ color: 'var(--color-secondary)' }}
         />
-        <a className='github' href='https://github.com/polar0' target='_blank'>
-          <span>@ polar0</span>
+        <a
+          className='github'
+          href='https://github.com/0xpolarzero'
+          target='_blank'
+        >
+          <span>@ 0xpolarzero</span>
         </a>
 
         <FontAwesomeIcon
